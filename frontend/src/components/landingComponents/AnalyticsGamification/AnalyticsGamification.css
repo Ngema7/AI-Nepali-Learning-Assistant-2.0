@@ -1,0 +1,324 @@
+.ag-section {
+  padding: 5rem 0;
+  background-color: var(--bg-main, #fafafa);
+  overflow: hidden;
+}
+
+.ag-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.ag-card {
+  background: var(--bg-white, #ffffff);
+  border-radius: 28px;
+  border: 1px solid var(--border, #e5e7eb);
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px -15px rgba(12, 21, 46, 0.03);
+  will-change: transform, opacity; /* एनिमेसन अप्टिमाइजेसन */
+}
+
+.ag-card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary, #111111);
+  margin-bottom: 2rem;
+  letter-spacing: -0.3px;
+}
+
+/* ================= GAMIFICATION CARD ================= */
+.gamification-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  background: linear-gradient(145deg, #ffffff 0%, #fbfaff 100%);
+}
+
+.gamification-left {
+  flex: 1;
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  will-change: transform, opacity;
+}
+
+.f-icon-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+/* Icons Specific Custom Backgrounds */
+.xp-bg { background-color: #fff9db; }
+.streak-bg { background-color: #ffe3e3; }
+.badges-bg { background-color: #e8f5e9; }
+.levels-bg { background-color: #e3fafc; }
+
+.f-text h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary, #111111);
+  margin-bottom: 0.15rem;
+}
+
+.f-text p {
+  font-size: 0.85rem;
+  color: var(--text-secondary, #4b5563);
+}
+
+/* Trophy Area Graphics */
+.gamification-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.trophy-container {
+  position: relative;
+  text-align: center;
+  padding: 2rem;
+}
+
+.glow-effect {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(108, 99, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.real-trophy {
+  font-size: 5.5rem;
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+.lvl-badge-footer {
+  background: var(--text-primary, #111111);
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+  box-shadow: 0 10px 20px -5px rgba(12, 21, 46, 0.3);
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lvl-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.lvl-xp {
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-top: 0.1rem;
+}
+
+/* ================= ANALYTICS CARD ================= */
+.analytics-layout {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.dashboard-widget {
+  background-color: #f4f5f9;
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 1px solid rgba(229, 231, 235, 0.6);
+}
+
+.widget-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary, #4b5563);
+  display: block;
+}
+
+.chart-widget {
+  flex: 1.3;
+}
+
+.big-stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+  margin-top: 0.4rem;
+}
+
+.widget-subtext {
+  font-size: 0.75rem;
+  color: var(--text-muted, #94a3b8);
+  margin-bottom: 1.5rem;
+}
+
+/* Custom CSS Bar Graph */
+.main-bar-graph {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 120px;
+  gap: 10px;
+  padding: 0 0.5rem;
+}
+
+.graph-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.actual-bar {
+  width: 100%;
+  background-color: var(--accent-purple, #a855f7);
+  border-radius: 6px 6px 0 0;
+  transition: background-color 0.2s ease;
+  will-change: transform; /* ६०fps बार ग्रो गराउनका लागि */
+}
+
+.actual-bar:hover {
+  background-color: var(--primary-light, #c084fc);
+}
+
+.actual-bar.active-bar {
+  background-color: var(--primary, #5d38f5);
+  box-shadow: 0 4px 12px rgba(93, 56, 245, 0.2);
+}
+
+.day-lbl {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted, #94a3b8);
+  margin-top: 0.6rem;
+}
+
+/* Right Mini Widgets Stack */
+.dashboard-widget-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* SVG Circular Chart */
+.circular-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.circle-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-top: 1rem;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #e5e7eb;
+  stroke-width: 8;
+}
+
+.circle-progress {
+  fill: none;
+  stroke: var(--secondary, #ec4899);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  will-change: stroke-dashoffset; /* सर्कल एनिमेसन बुस्ट गर्न */
+}
+
+.circle-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+}
+
+/* Streak Badge Widget */
+.streak-widget {
+  text-align: center;
+}
+
+.streak-fire-center {
+  margin-top: 0.5rem;
+}
+
+.animated-fire {
+  font-size: 2rem;
+  animation: firePulse 1.5s infinite alternate;
+}
+
+.streak-num {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+  line-height: 1.1;
+  margin-top: 0.2rem;
+}
+
+.streak-days {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted, #94a3b8);
+}
+
+/* ================= KEYFRAMES ANIMATIONS ================= */
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes firePulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(255,100,0,0.2)); }
+  100% { transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(255,100,0,0.4)); }
+}
+
+/* Responsive Implementation */
+@media (max-width: 992px) {
+  .ag-container {
+    grid-template-columns: 1fr;
+  }
+  .analytics-layout {
+    flex-direction: column;
+  }
+}

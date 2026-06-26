@@ -1,0 +1,59 @@
+/* ===== PARENT SYSTEM WRAPPER ===== */
+.db-container {
+  background-color: #F8FAFC;
+  color: #1E293B;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mobile Layout Dark Overlay */
+.db-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.3);
+  z-index: 99; /* Topbar भन्दा माथि तास्सिने गरी राखिएको */
+}
+
+/* ===== TRACK SYSTEM MAIN CONTENT PANEL ===== */
+.db-main-wrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-top: 80px; /* Fixed Topbar को उचाई बराबरको स्पेस सुरक्षित राख्छ */
+}
+
+@media (min-width: 1024px) {
+  .db-main-wrapper {
+    padding-left: 256px; /* Sidebar भन्दा पछाडि कन्टेन्ट नछिपियोस् भनेर मिलाएको */
+  }
+}
+
+/* ===== SCROLLABLE AREA BELOW FIXED BAR ===== */
+.db-content-body {
+  padding: 32px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media (max-width: 1023px) {
+  .db-content-body {
+    padding: 20px 16px;
+  }
+}
+
+/* Temporary placeholder container design */
+.placeholder-content {
+  border: 2px dashed #E2E8F0;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  color: #94A3B8;
+  font-size: 14px;
+}

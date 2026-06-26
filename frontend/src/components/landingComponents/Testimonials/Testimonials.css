@@ -1,0 +1,161 @@
+:root {
+  --bg-light: #fdfdfd;
+  --card-bg: #ffffff;
+  --text-main: #000000;
+  --text-sub: #6b7280;
+}
+
+.testimonials-section {
+  padding: 3.5rem 0; /* padding minor reduced */
+  text-align: center;
+  background-color: var(--bg-light);
+}
+
+.t-section-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 2rem;
+}
+
+/* Vertical Container with Reduced Height */
+.testimonials-container-vertical {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 480px; /* तपाईंले भन्नुभए जस्तै height थोरै कम (४८० पिक्सेल) बनाइएको छ */
+  overflow: hidden;
+  position: relative;
+  padding: 0 1rem;
+}
+
+/* Fading Effect on top/bottom for image_d24820.png style */
+.testimonials-container-vertical::before,
+.testimonials-container-vertical::after {
+  content: "";
+  left: 0;
+  width: 100%;
+  height: 90px; /* Adjusted height according to new wrapper */
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+.testimonials-container-vertical::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--bg-light) 8%, transparent);
+}
+.testimonials-container-vertical::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--bg-light) 8%, transparent);
+}
+
+.t-column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+.t-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: max-content;
+}
+
+/* Vertical Auto Scroll Animations - Powered smoothly with Lenis structure */
+.col-down-fast .t-track {
+  animation: scrollDownVertical 28s linear infinite;
+}
+.col-down-slow .t-track {
+  animation: scrollDownVertical 38s linear infinite;
+}
+.col-down-normal .t-track {
+  animation: scrollDownVertical 33s linear infinite;
+}
+
+.t-column:hover .t-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollDownVertical {
+  0% {
+    transform: translateY(-66.66%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* --- Card Setup --- */
+.testimonial-card {
+  background: var(--card-bg);
+  border-radius: 20px; /* Clean look from image_d24820.png */
+  border: 1px solid rgba(229, 231, 235, 0.75);
+  padding: 1.5rem 1.5rem;
+  text-align: left;
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.t-text-msg {
+  font-size: 0.92rem;
+  color: var(--text-main);
+  line-height: 1.5;
+  font-weight: 500;
+  margin: 0;
+}
+
+.t-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.t-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.t-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.t-user-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.t-user-grade {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
+
+/* Responsive fixes */
+@media (max-width: 900px) {
+  .testimonials-container-vertical {
+    grid-template-columns: repeat(2, 1fr);
+    height: 44px0px;
+  }
+  .hide-on-tablet {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .testimonials-container-vertical {
+    grid-template-columns: 1fr;
+    height: 420px;
+  }
+  .hide-on-mobile {
+    display: none;
+  }
+}

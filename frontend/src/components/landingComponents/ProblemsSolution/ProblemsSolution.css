@@ -1,0 +1,218 @@
+/* Problems & Solutions - Apple & Tesla Soft Styling */
+.prob-sol-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 100px 0; /* थोरै बढी स्पेस */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+}
+
+.prob-sol-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 0.2fr 1fr;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+}
+
+/* Common Box Properties */
+.prob-box, .sol-box {
+  background: #ffffff;
+  border-radius: 28px; /* अझ बढी प्रिमियम गोलाइ */
+  padding: 44px;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.01);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, opacity;
+}
+
+/* Left Box: Problems */
+.prob-box {
+  border: 1px solid rgba(239, 68, 68, 0.05);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(254, 242, 242, 0.3) 100%);
+  position: relative;
+}
+
+.prob-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 48px rgba(239, 68, 68, 0.04);
+}
+
+.prob-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #991b1b; 
+  margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+
+.prob-list, .sol-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 2;
+}
+
+.prob-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: #4b5563;
+  font-size: 1.05rem;
+  font-weight: 500;
+  will-change: transform, opacity;
+}
+
+.prob-icon {
+  background: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Image alignment at the bottom of problem box */
+.prob-image-container {
+  margin-top: auto;
+  align-self: center;
+  z-index: 1;
+  padding-top: 20px;
+}
+
+.student-illustration {
+  height: 140px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+/* Right Box: Solutions */
+.sol-box {
+  border: 1px solid rgba(16, 185, 129, 0.05);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(240, 253, 250, 0.4) 100%);
+}
+
+.sol-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 48px rgba(16, 185, 129, 0.05);
+}
+
+.sol-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #065f46; 
+  margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+
+.sol-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: #1f2937;
+  font-size: 1.05rem;
+  font-weight: 500;
+  will-change: transform, opacity;
+}
+
+.sol-icon {
+  background: rgba(16, 185, 129, 0.08);
+  color: #10b981;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Center AI Ring Badge Styles */
+.center-glow-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  will-change: transform, opacity;
+}
+
+.center-ai-badge {
+  width: 58px;
+  height: 58px;
+  background: #ffffff;
+  border: 1px solid rgba(93, 56, 245, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #5d38f5;
+  box-shadow: 0 10px 25px rgba(93, 56, 245, 0.08);
+  position: relative;
+}
+
+/* Beautiful Animated Outer Rings */
+.center-ai-badge::before {
+  content: '';
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  border: 1.5px dashed rgba(93, 56, 245, 0.25);
+  border-radius: 50%;
+  animation: rotateRing 16s linear infinite; /* गति थोरै स्मुथ बनाइएको */
+}
+
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 991px) {
+  .prob-sol-section {
+    padding: 60px 0;
+  }
+
+  .prob-sol-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .center-glow-wrapper {
+    grid-row: 2; 
+    margin: 10px 0;
+  }
+
+  .prob-box, .sol-box {
+    min-height: auto;
+    padding: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .prob-title, .sol-title {
+    font-size: 1.35rem;
+  }
+  .prob-item, .sol-item {
+    font-size: 0.98rem;
+  }
+}

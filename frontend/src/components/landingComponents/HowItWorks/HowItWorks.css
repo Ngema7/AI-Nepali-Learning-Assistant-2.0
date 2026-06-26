@@ -1,0 +1,93 @@
+.how-it-works {
+  padding: 5rem 0;
+  background-color: var(--bg-white);
+  border-radius: 24px;
+  margin: 2rem 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  overflow: hidden; /* एनिमेसन स्क्रिन बाहिर गएर तेर्सो स्क्रोल बार नआओस् भन्नका लागि */
+}
+
+.how-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.how-content {
+  flex: 1;
+  max-width: 480px;
+}
+
+.how-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.how-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.download-badges {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.badge-btn img {
+  height: 44px;
+  transition: transform 0.2s ease;
+  will-change: transform; /* ब्राउजर पर्फर्मेन्स अप्टिमाइजेसन */
+}
+
+.badge-btn img:hover {
+  transform: translateY(-2px);
+}
+
+/* Right Side Image Styling */
+.how-media {
+  flex: 1.2;
+  display: flex;
+  justify-content: center;
+  will-change: transform, opacity; /* GSAP Floating र Entrance लाई स्मुथ बनाउन */
+}
+
+.mockups-img {
+  width: 100%;
+  max-width: 580px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Responsive Design for Tablets and Mobile */
+@media (max-width: 968px) {
+  .how-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .how-content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .download-badges {
+    justify-content: center;
+  }
+
+  .how-title {
+    font-size: 2rem;
+  }
+}

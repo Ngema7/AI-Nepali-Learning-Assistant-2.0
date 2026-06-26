@@ -1,0 +1,28 @@
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import LandingPage from '../pages/LandingPage';
+import LoginPage from '../pages/LoginPage';
+import Dashboard from '../pages/Dashboard/Dashboard';
+import PrivateRoute from './PrivateRoute'; // तपाईंले बनाएको PrivateRoute
+
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      
+      {/* ड्यासबोर्डलाई प्रोटेक्टेड (Protected) बनाउने */}
+      <Route 
+        path="/dashboard" 
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        } 
+      />
+    </Routes>
+  );
+};
+
+export default AppRoutes;

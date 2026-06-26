@@ -1,0 +1,346 @@
+/* ================= GLOBAL CONFIGURATION & VARIABLES ================= */
+:root {
+  --primary-purple: #6c63ff;
+  --primary-purple-hover: #5f35f3;
+  --text-main: #0c152e;       /* Deep elegant dark */
+  --text-muted: #5b5f6c;      /* Muted slate gray */
+  --bg-glass: rgba(255, 255, 255, 0.75); 
+  --blur-amount: saturate(180%) blur(20px); /* Premium Apple Blur */
+  --transition-apple: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); /* Ultra smooth motion */
+}
+
+/* ================= NAVBAR CONTAINER ================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 70px; /* Slight breathing room */
+  background: var(--bg-glass);
+  backdrop-filter: var(--blur-amount);
+  -webkit-backdrop-filter: var(--blur-amount);
+  border-bottom: 1px solid rgba(12, 21, 46, 0.06);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  opacity: 0; /* GSAP yields 1 on load */
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ================= LOGO STYLING ================= */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.navbar-logo:hover .logo-img {
+  transform: scale(1.08) rotate(-3deg); /* Micro premium pop */
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.brand-tagline {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ================= DESKTOP NAVIGATION (Tesla Minimalist) ================= */
+.nav-menu-desktop {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.03); /* Subtle pill capsule wrapper */
+  padding: 6px;
+  border-radius: 30px;
+}
+
+.nav-links {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 20px;
+  transition: var(--transition-apple);
+  display: inline-block;
+}
+
+/* Hover Pill Effect */
+.nav-links:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-main);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Active State */
+.nav-links.active {
+  color: #ffffff;
+  background: var(--primary-purple);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.25);
+}
+
+/* ================= ACTIONS AREA (Buttons) ================= */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.login-btn {
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: var(--transition-apple);
+}
+
+.login-btn:hover {
+  color: var(--primary-purple);
+  background: rgba(108, 99, 255, 0.05);
+}
+
+.cta-btn {
+  background: var(--primary-purple);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 20px; /* Modern sleek capsule button */
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(108, 99, 255, 0.2);
+  transition: var(--transition-apple);
+}
+
+.cta-btn:hover {
+  background: var(--primary-purple-hover);
+  box-shadow: 0 8px 22px rgba(108, 99, 255, 0.35);
+  transform: translateY(-1.5px);
+}
+
+/* ================= HAMBURGER BUTTON (Mobile Only) ================= */
+.hamburger {
+  display: none;
+  background: rgba(0, 0, 0, 0.03);
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 1003;
+  transition: var(--transition-apple);
+}
+
+.hamburger:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.bar {
+  width: 18px;
+  height: 2px;
+  background-color: var(--text-main);
+  border-radius: 2px;
+  transition: var(--transition-apple);
+}
+
+/* ================= TESLA MODERN SIDEBAR ================= */
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  right: -340px; 
+  width: 320px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+  box-shadow: -15px 0 40px rgba(0, 0, 0, 0.04);
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 28px;
+  transition: var(--transition-apple);
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.sidebar-menu.active {
+  right: 0; 
+}
+
+/* Blurred Overlay BG */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(12, 21, 46, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1001;
+  transition: var(--transition-apple);
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 32px;
+}
+
+.close-btn {
+  background: rgba(0, 0, 0, 0.03);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-apple);
+}
+
+.close-btn:hover {
+  background: rgba(255, 0, 0, 0.08);
+  color: #ef4444;
+  transform: rotate(90deg);
+}
+
+.sidebar-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-item {
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  display: block;
+  padding: 14px 20px;
+  border-radius: 14px;
+  transition: var(--transition-apple);
+}
+
+.sidebar-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+  padding-left: 26px; 
+  color: var(--primary-purple);
+}
+
+.sidebar-item.active {
+  background: rgba(108, 99, 255, 0.08);
+  color: var(--primary-purple);
+  font-weight: 600;
+}
+
+/* Sidebar Footer (Login/Signup) */
+.sidebar-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.sidebar-login-btn {
+  text-align: center;
+  color: var(--text-main);
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: var(--transition-apple);
+}
+
+.sidebar-login-btn:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-cta-btn {
+  text-align: center;
+  background: var(--primary-purple);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(108, 99, 255, 0.2);
+  transition: var(--transition-apple);
+}
+
+.sidebar-cta-btn:hover {
+  background: var(--primary-purple-hover);
+  transform: translateY(-1px);
+}
+
+/* ================= RESPONSIVE MEDIA BREAKPOINT ================= */
+@media (max-width: 991px) {
+  .nav-menu-desktop,
+  .navbar-actions .login-btn,
+  .navbar-actions .cta-btn {
+    display: none; 
+  }
+
+  .hamburger {
+    display: flex; 
+  }
+  
+  /* Hamburger Active Animation */
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(2) {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+}

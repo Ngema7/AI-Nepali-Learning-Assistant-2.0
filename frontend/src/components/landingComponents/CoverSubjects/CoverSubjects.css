@@ -1,0 +1,88 @@
+.subjects-section {
+  text-align: center;
+  padding: 4rem 0;
+  background-color: #ffffff; /* वा तपाईँको थिम अनुसार */
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary, #111111);
+  margin-bottom: 2.5rem;
+}
+
+/* विन्डो भन्दा बाहिर कार्ड जान नदिन लुकाउने र हल्का फेड इफेक्ट दिने */
+.marquee-container {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  position: relative;
+  padding: 10px 0;
+  /* दायाँ र बायाँ हल्का धमिलो (Fade) बनाउन मास्क हाल्न सक्नुहुन्छ */
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+/* कार्डहरू एउटै तेर्सो लाइनमा बगाउने ट्र्याक */
+.marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: scrollInfinite 25s linear infinite; /* २५ सेकेन्डमा एउटा लुप पूरा हुने */
+}
+
+/* माउस लैजाँदा अटो-स्क्रोल रोकिने बनाउन */
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* तपाईँको साविककै कार्ड स्टाइल - चौडाई स्थिर (Fix) गरिएको छ */
+.subject-card {
+  background-color: var(--bg-white, #ffffff);
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: 1px solid rgba(229, 231, 235, 0.5);
+  width: 150px; /* अटो स्क्रोलमा कार्ड खुम्चिन नदिन फिक्स साइज */
+  flex-shrink: 0;
+}
+
+.subject-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px -3px rgba(108, 99, 255, 0.12);
+}
+
+.icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subject-icon {
+  font-size: 1.5rem;
+}
+
+.subject-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary, #4b5563);
+}
+
+/* 🔄 Infinite Auto Scroll को जादुई CSS keyframes */
+@keyframes scrollInfinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 0.75rem)); /* आधी बाटो पुगेपछि बिना कुनै झटका सुरुमा फर्कन्छ */
+  }
+}

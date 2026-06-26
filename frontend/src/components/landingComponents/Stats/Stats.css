@@ -1,0 +1,127 @@
+/* Stats Section - Clean & High Premium Minimalist Look */
+.stats-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px 0 60px 0; /* दुरी थोरै मिलाएर अझ फराकिलो बनाइएको */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.stats-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Landing Page जस्तै प्रिमियम सिङ्गल रोमा बक्स */
+.stats-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(93, 56, 245, 0.06); 
+  border-radius: 20px; /* बढी प्रिमियम गोलाइ */
+  padding: 28px 32px;
+  box-shadow: 0 16px 40px rgba(93, 56, 245, 0.02); /* सफ्ट ग्लास जस्तो छाया */
+  will-change: transform, opacity; /* स्मूथ परफर्मेन्सका लागि */
+}
+
+/* एउटा सिंगल तथ्याङ्क ब्लक */
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  justify-content: center;
+  position: relative;
+}
+
+/* बिचमा डिभाइडर लाइनहरू (अन्तिम कार्ड बाहेक सबैमा) */
+.stat-card:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background-color: #f1f5f9; 
+}
+
+/* आइकन राख्ने गोलो घेरा (लाइट ब्लुइश-पर्पल टिन्ट) */
+.stat-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  background-color: rgba(93, 56, 245, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* कार्ड होभर गर्दा आइकन थोरै पप हुने */
+.stat-card:hover .stat-icon-wrapper {
+  transform: scale(1.08);
+  background-color: rgba(93, 56, 245, 0.09);
+}
+
+.stat-icon {
+  font-size: 1.15rem;
+}
+
+/* टेक्स्ट इन्फो */
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 1.45rem; /* थोरै ठुलो बनाइएको */
+  font-weight: 700;
+  color: #111111;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #6e6e73; 
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints (मोबाइल र ट्याब्लेटका लागि)
+   ========================================================================== */
+
+@media (max-width: 991px) {
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 28px;
+    padding: 28px;
+  }
+
+  .stat-card:not(:last-child)::after {
+    display: none; 
+  }
+  
+  .stat-card {
+    justify-content: flex-start;
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 440px) {
+  .stats-grid {
+    grid-template-columns: 1fr; 
+    gap: 20px;
+  }
+}

@@ -1,0 +1,150 @@
+.cta-section {
+  padding: 4rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.cta-banner {
+  background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+  border-radius: 28px; /* अलि बढी मोडर्न र राउन्डेड */
+  padding: 4rem 4.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -20px rgba(99, 102, 241, 0.45);
+  will-change: transform, opacity; /* Hardware acceleration को लागि */
+}
+
+/* Background Abstract Glow Elements */
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -5%;
+  width: 350px;
+  height: 350px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.cta-text-side {
+  flex: 1.6;
+  z-index: 2;
+}
+
+.cta-main-title {
+  color: #ffffff;
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.6px;
+}
+
+.cta-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.cta-action-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2.5rem;
+  z-index: 2;
+}
+
+/* Glassmorphic White Button */
+.cta-btn {
+  background-color: #ffffff;
+  color: #5f35f3;
+  border: none;
+  padding: 1.1rem 2.2rem;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cta-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.18);
+  background-color: #ffffff;
+}
+
+.cta-arrow {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-btn:hover .cta-arrow {
+  transform: translateX(6px);
+}
+
+/* Robot Graphics */
+.cta-robot-wrapper {
+  position: relative;
+  width: 130px;
+  height: 130px;
+}
+
+.cta-robot-img {
+  width: 145%;
+  height: 145%;
+  object-fit: contain;
+  position: absolute;
+  bottom: -32px;
+  right: -20px;
+  filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.2));
+  animation: robotFloat 4s ease-in-out infinite;
+}
+
+/* Floating Animation for Robot */
+@keyframes robotFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(4deg); }
+}
+
+/* Screen Responsiveness */
+@media (max-width: 992px) {
+  .cta-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 3.5rem 2rem;
+    gap: 2.5rem;
+  }
+  
+  .cta-main-title {
+    font-size: 2rem;
+  }
+
+  .cta-action-side {
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .cta-robot-wrapper {
+    width: 110px;
+    height: 110px;
+  }
+
+  .cta-robot-img {
+    position: static;
+    width: 100%;
+    height: 100%;
+  }
+}

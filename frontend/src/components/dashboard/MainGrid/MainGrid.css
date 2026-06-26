@@ -1,0 +1,134 @@
+/* ===== 3 COLUMN CONTAINER ===== */
+.db-three-col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.grid-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== BASE CARDS ===== */
+.content-card {
+  background-color: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.01), 0 2px 4px -1px rgba(15, 23, 42, 0.01);
+  box-sizing: border-box;
+}
+
+.content-card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 16px 0;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+.card-header h4 { margin-bottom: 0; }
+
+.view-all-btn, .db-select-dropdown {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.view-all-btn:hover { background-color: #f1f5f9; color: #0f172a; }
+
+/* ===== GOALS COMPONENT ===== */
+.goal-list { display: flex; flex-direction: column; }
+.goal-item { display: flex; justify-content: space-between; font-size: 13.5px; color: #334155; font-weight: 500; }
+.goal-item-left { display: flex; align-items: center; gap: 8px; }
+.check-done { color: #10b981; }
+
+.progress-line-bar { width: 100%; height: 6px; background-color: #f1f5f9; border-radius: 10px; margin: 8px 0; overflow: hidden; }
+.progress-line-bar div { height: 100%; border-radius: 10px; }
+.purple-fill div { background: linear-gradient(90deg, #8b5cf6, #7c3aed); }
+.green-fill div { background: linear-gradient(90deg, #10b981, #059669); }
+.card-footer-text { font-size: 12px; font-weight: 600; color: #7c3aed; margin: 18px 0 0 0; text-align: center; }
+
+/* ===== WEEKLY GRAPH COMPONENT ===== */
+.graph-time { font-size: 24px; font-weight: 700; color: #0f172a; margin: 4px 0 0 0; display: flex; align-items: center; gap: 8px; }
+.graph-trend { font-size: 11px; color: #16a34a; background-color: #f0fdf4; padding: 2px 6px; border-radius: 6px; display: inline-flex; align-items: center; gap: 2px; }
+.compare-text { font-size: 11.5px; color: #94a3b8; font-weight: 500; }
+
+.db-chart-container { display: flex; justify-content: space-between; align-items: flex-end; height: 110px; margin-top: 20px; padding: 0 6px; }
+.chart-bar-wrapper { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 26px; }
+.chart-bar-fill { width: 100%; background: linear-gradient(to top, #6366f1, #4f46e5); border-radius: 6px 6px 0 0; min-height: 4px; }
+.chart-day-label { font-size: 11px; color: #94a3b8; font-weight: 500; }
+
+/* ===== STREAK CALENDAR COMPONENT ===== */
+.calendar-grid-header, .calendar-grid-days { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; gap: 8px; }
+.calendar-grid-header { font-size: 12px; color: #94a3b8; font-weight: 700; margin-bottom: 8px; }
+.calendar-day-circle { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12.5px; font-weight: 700; margin: 0 auto; }
+.streak-hit { background-color: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+.streak-missed { background-color: #fff7ed; color: #ea580c; border: 1px dashed #ffedd5; }
+
+.calendar-legend { display: flex; justify-content: center; gap: 14px; font-size: 11px; color: #64748b; margin-top: 20px; font-weight: 500; }
+.calendar-legend .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.dot.hit { background-color: #10b981; }
+.dot.streak { background-color: #a855f7; }
+.dot.missed { background-color: #f97316; }
+.best-streak-pill { text-align: center; font-size: 12px; font-weight: 700; color: #c2410c; margin: 16px 0 0 0; background-color: #fff7ed; padding: 4px; border-radius: 8px; }
+
+/* ===== UPCOMING TASKS COMPONENT ===== */
+.task-list { display: flex; flex-direction: column; gap: 12px; }
+.task-card-item { display: flex; align-items: center; gap: 14px; padding: 12px; background-color: #f8fafc; border-radius: 14px; border: 1px solid #f1f5f9; }
+.task-icon { padding: 8px; border-radius: 10px; flex-shrink: 0; }
+.text-green { background-color: #e6fdf0; color: #15803d; }
+.text-blue { background-color: #f0f9ff; color: #0369a1; }
+.task-card-item h6 { font-size: 13.5px; font-weight: 700; margin: 0; color: #1e293b; }
+.task-card-item p { font-size: 11px; color: #64748b; margin: 3px 0 0 0; font-weight: 500; }
+.view-tasks-btn, .view-full-lb { width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; background: transparent; border: 1px solid #e2e8f0; color: #475569; padding: 10px; border-radius: 12px; font-size: 12.5px; font-weight: 600; cursor: pointer; margin-top: 16px; transition: all 0.2s; }
+.view-tasks-btn:hover, .view-full-lb:hover { background-color: #f8fafc; color: #0f172a; border-color: #cbd5e1; }
+
+/* ===== LEADERBOARD COMPONENT ===== */
+.leaderboard-list { display: flex; flex-direction: column; gap: 4px; }
+.leader-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 6px; border-radius: 10px; }
+.leader-user-left { display: flex; align-items: center; gap: 12px; }
+.rank-num { font-size: 12px; font-weight: 800; color: #64748b; width: 16px; text-align: center; }
+.rank-1 { color: #d97706; background-color: #fef3c7; border-radius: 4px; padding: 1px 4px; } 
+.rank-2 { color: #475569; background-color: #f1f5f9; border-radius: 4px; padding: 1px 4px; } 
+.rank-3 { color: #78350f; background-color: #ffedd5; border-radius: 4px; padding: 1px 4px; }
+.leader-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid #e2e8f0; }
+.leader-name { font-size: 13.5px; color: #334155; font-weight: 500; }
+.leader-xp { font-size: 13px; color: #1e293b; }
+
+.current-user-row { background: linear-gradient(90deg, #f3e8ff 0%, #faf5ff 100%); border: 1px dashed #a855f7; padding: 10px 12px; margin-top: 8px; }
+.current-user-row .leader-name, .current-user-row .leader-xp { color: #6d28d9; }
+.current-user-row .rank-num { color: #7c3aed; }
+
+/* ===== UTILITIES ===== */
+.m-top-15 { margin-top: 15px; }
+.m-top-20 { margin-top: 20px; }
+.font-bold { font-weight: 700; }
+
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+@media (max-width: 1200px) {
+  .db-three-col-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .db-three-col-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .content-card { padding: 18px; }
+}

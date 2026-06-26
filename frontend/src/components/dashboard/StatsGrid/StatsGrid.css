@@ -1,0 +1,106 @@
+/* ===== STATS GRID CONTAINER ===== */
+.db-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px; /* मुख्य ग्रिड भन्दा अलि माथि ग्याप राख्न */
+}
+
+/* ===== CARD BASE STYLE ===== */
+.stat-card {
+  background-color: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.01), 0 2px 4px -1px rgba(15, 23, 42, 0.01);
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.04);
+}
+
+/* ===== ICON BACKGROUND THEMES ===== */
+.stat-icon-bg {
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.purple .stat-icon-bg { background-color: #f3e8ff; color: #7c3aed; }
+.orange .stat-icon-bg { background-color: #fff7ed; color: #ea580c; }
+.green .stat-icon-bg { background-color: #f0fdf4; color: #16a34a; }
+.blue .stat-icon-bg { background-color: #f0f9ff; color: #0284c7; }
+.pink .stat-icon-bg { background-color: #fdf2f8; color: #db2777; }
+
+/* ===== TEXT STYLES ===== */
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 4px 0;
+  letter-spacing: -0.01em;
+}
+
+.stat-trend {
+  font-size: 11.5px;
+  font-weight: 600;
+}
+.stat-trend.positive { color: #16a34a; }
+.stat-trend.negative { color: #ef4444; }
+
+.stat-subtext {
+  font-size: 11.5px;
+  color: #94a3b8;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ===== FULLY RESPONSIVE MEDIA QUERIES ===== */
+
+/* ट्याब्लेट वा सानो ल्यापटपको लागि ३ कलम */
+@media (max-width: 1200px) {
+  .db-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* साना ट्याब्लेट वा ठूला मोबाइलको लागि २ कलम */
+@media (max-width: 768px) {
+  .db-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .stat-card { padding: 14px; }
+  .stat-value { font-size: 19px; }
+}
+
+/* सामान्य मोबाइल फोनहरूको लागि सिंगल कलम */
+@media (max-width: 480px) {
+  .db-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
