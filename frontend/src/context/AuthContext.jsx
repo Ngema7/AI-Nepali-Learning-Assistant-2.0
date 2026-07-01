@@ -1,4 +1,6 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { loginUser, getCurrentUser, logoutUser } from "../services/authService";
 
 export const AuthContext = createContext();
 
@@ -6,36 +8,53 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // यदि पहिले नै लगइन छ भने LocalStorage बाट डाटा तान्ने
   useEffect(() => {
-    const savedUser = localStorage.getItem('nepali_tutor_user');
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-    setLoading(false);
+    const initAuth = async () => {
+      // ✅ Google OAuth le URL ma token pathauxa - tyo catch garne
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlToken = urlParams.get("token");
+
+      if (urlToken) {
+        localStorage.setItem("token", urlToken);
+        // URL clean garne
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+
+      const token = localStorage.getItem("token");
+      if (token) {
+        try {
+          const res = await getCurrentUser();
+          setUser(res.user);
+        } catch {
+          localStorage.removeItem("token");
+        }
+      }
+      setLoading(false);
+    };
+
+    initAuth();
   }, []);
 
-  // लगइन फङ्सन
-  const login = (email, password) => {
-    if (email === 'demo@gmail.com' && password === 'password123') {
-      const userData = { name: 'रमित श्रेष्ठ', email: email, role: 'student' };
-      setUser(userData);
-      localStorage.setItem('nepali_tutor_user', JSON.stringify(userData));
-      return { success: true };
-    } else {
-      return { success: false, message: 'कृपया सही इमेल वा पासवर्ड हाल्नुहोस्!' };
-    }
+  const login = async (email, password) => {
+    const res = await loginUser(email, password);
+    localStorage.setItem("token", res.token);
+    setUser(res.user);
+    return res.user;
   };
 
-  // लगआउट फङ्सन
-  const logout = () => {
+  const logout = async () => {
+    await logoutUser();
+    localStorage.removeItem("token");
     setUser(null);
-    localStorage.removeItem('nepali_tutor_user');
+  };
+
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, loading }}>
-      {!loading && children}
+    <AuthContext.Provider value={{ user, loading, login, logout, updateUser }}>
+      {children}
     </AuthContext.Provider>
   );
 };

@@ -1,53 +1,27 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
-    name: {
+    username: { type: String },
+    email: { type: String, required: true, unique: true },
+    password: { type: String },
+    googleId: { type: String },
+    avatar: { type: String },
+    age: { type: Number, default: null },
+    parentType: {
       type: String,
-      required: true
+      enum: ["self", "parent", "teacher", null],
+      default: null,
     },
-
-    email: {
-      type: String,
-      required: true,
-      unique: true
-    },
-
-    password: {
-      type: String
-    },
-
-    avatar: {
-      type: String,
-      default: ""
-    },
-
-    role: {
-      type: String,
-      enum: ["student", "admin"],
-      default: "student"
-    },
-
-    xp: {
-      type: Number,
-      default: 0
-    },
-
-    streak: {
-      type: Number,
-      default: 0
-    },
-
-    badges: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Badge"
-      }
-    ]
+    isOnboarded: { type: Boolean, default: false },
+    isVerified: { type: Boolean, default: false },
+    isLoggedIn: { type: Boolean, default: false },
+    token: { type: String, default: null },
+    otp: { type: String, default: null },
+    otpExpiry: { type: Date, default: null },
   },
-  {
-    timestamps: true
-  }
+  { timestamps: true }
 );
 
-module.exports = mongoose.model("User", userSchema);
+// ✅ Named export matra - default export hatayo confusion hatauna
+export const User = mongoose.model("User", userSchema);

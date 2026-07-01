@@ -119,7 +119,7 @@ AI-Nepali-Learning-Assistant/
     │   │
     │   ├── auth/
     │   │   ├── Login.jsx
-    │   │   ├── Register.jsx
+    │   │   |
     │   │   └── GoogleLoginButton.jsx
     │   │
     │   ├── dashboard/
@@ -142,7 +142,7 @@ AI-Nepali-Learning-Assistant/
     ├── pages/
     │   ├── LandingPage.jsx
     │   ├── LoginPage.jsx
-    │   ├── RegisterPage.jsx
+    │   ├---OnboardingPage
     │   ├── Dashboard.jsx
     │   ├── Courses.jsx
     │   ├── Quiz.jsx
@@ -186,3 +186,12 @@ AI-Nepali-Learning-Assistant/
     │
     ├── package.json
     └── vite.config.js
+
+
+
+
+
+
+
+
+
