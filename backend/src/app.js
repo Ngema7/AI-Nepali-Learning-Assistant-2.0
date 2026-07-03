@@ -5,8 +5,8 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
-import session from "express-session";
 import passport from "passport";
+
 import "./config/passport.js";
 import authRoutes from "./routes/authRoutes.js";
 
@@ -22,20 +22,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan("dev"));
 
-// ✅ Session - passport session ko lagi chahinxa
-app.use(session({
-  secret: process.env.JWT_SECRET || "fallback_secret",
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: false,
-    httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000,
-  },
-}));
+// ❌ REMOVE SESSION COMPLETELY (IMPORTANT FIX)
 
+// passport init only
 app.use(passport.initialize());
-app.use(passport.session());
 
 app.get("/", (req, res) => {
   res.json({ success: true, message: "AI Nepali Learning Assistant API 🚀" });

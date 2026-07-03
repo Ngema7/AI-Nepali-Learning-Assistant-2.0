@@ -18,20 +18,25 @@ router.get("/me", protect, getMe);
 router.post("/logout", protect, logoutUser);
 router.post("/onboarding", protect, completeOnboarding);
 
-// ✅ Google OAuth - session: true hunuparxa cookie-based flow ko lagi
+// ==============================
+// GOOGLE LOGIN START
+// ==============================
 router.get(
   "/google",
   passport.authenticate("google", {
     scope: ["profile", "email"],
-    session: true,
+    session: false, // ✅ FIX
   })
 );
 
+// ==============================
+// GOOGLE CALLBACK
+// ==============================
 router.get(
   "/google/callback",
   passport.authenticate("google", {
     failureRedirect: "http://localhost:5173/login?error=google_failed",
-    session: true,
+    session: false, // ✅ FIX
   }),
   googleCallback
 );

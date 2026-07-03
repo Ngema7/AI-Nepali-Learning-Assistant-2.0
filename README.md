@@ -1,197 +1,107 @@
+📚 AI Nepali Learning Assistant
+An AI-powered learning platform designed to help Nepali students learn through interactive courses, quizzes, AI tutor chat, progress tracking, and gamified learning experience.
+🚀 Features
+🔐 Authentication (Email + Google OAuth)
+🤖 AI Tutor Chat (OpenAI / Gemini integration ready)
+📚 Course & Lesson Management
+🧠 Interactive Quizzes System
+📊 User Progress Tracking
+🏆 XP, Badges & Leaderboard System
+🎓 Certificates Generation
+💳 Subscription & Payment System (ready structure)
+👨‍🏫 Admin Dashboard Support
+📱 Responsive Frontend (React + Vite)
+🏗️ Tech Stack
+Frontend
+React.js (Vite)
+React Router DOM
+Context API
+Axios
+Vanilla CSS / Custom UI
+Backend
+Node.js
+Express.js
+MongoDB + Mongoose
+Passport.js (Google OAuth)
+JWT Authentication
+Redis (optional caching)
+Cloudinary (media uploads)
+📁 Project Structure
 AI-Nepali-Learning-Assistant/
 │
 ├── backend/
 │   ├── src/
-│   │
 │   ├── config/
-│   │   ├── db.js
-│   │   ├── passport.js
-│   │   ├── cloudinary.js
-│   │   ├── redis.js
-│   │   └── openai.js
-│   │
 │   ├── controllers/
-│   │   ├── authController.js
-│   │   ├── userController.js
-│   │   ├── courseController.js
-│   │   ├── lessonController.js
-│   │   ├── quizController.js
-│   │   ├── aiController.js
-│   │   ├── progressController.js
-│   │   ├── badgeController.js
-│   │   ├── leaderboardController.js
-│   │   ├── subscriptionController.js
-│   │   └── adminController.js
-│   │
 │   ├── middleware/
-│   │   ├── auth.js
-│   │   ├── admin.js
-│   │   ├── upload.js
-│   │   ├── validation.js
-│   │   ├── rateLimiter.js
-│   │   └── errorHandler.js
-│   │
 │   ├── models/
-│   │   ├── User.js
-│   │   ├── Course.js
-│   │   ├── Lesson.js
-│   │   ├── Quiz.js
-│   │   ├── Question.js
-│   │   ├── Progress.js
-│   │   ├── Badge.js
-│   │   ├── Leaderboard.js
-│   │   ├── Certificate.js
-│   │   ├── ChatHistory.js
-│   │   ├── Subscription.js
-│   │   ├── Payment.js
-│   │   └── Notification.js
-│   │
 │   ├── routes/
-│   │   ├── authRoutes.js
-│   │   ├── userRoutes.js
-│   │   ├── courseRoutes.js
-│   │   ├── lessonRoutes.js
-│   │   ├── quizRoutes.js
-│   │   ├── aiRoutes.js
-│   │   ├── progressRoutes.js
-│   │   ├── subscriptionRoutes.js
-│   │   ├── paymentRoutes.js
-│   │   └── adminRoutes.js
-│   │
 │   ├── services/
-│   │   ├── geminiService.js
-│   │   ├── openaiService.js
-│   │   ├── emailService.js
-│   │   ├── notificationService.js
-│   │   ├── certificateService.js
-│   │   └── paymentService.js
-│   │
 │   ├── utils/
-│   │   ├── generateToken.js
-│   │   ├── generateOTP.js
-│   │   ├── calculateXP.js
-│   │   ├── calculateStreak.js
-│   │   ├── logger.js
-│   │   └── helpers.js
-│   │
 │   ├── uploads/
-│   │   ├── profile/
-│   │   ├── courses/
-│   │   └── certificates/
-│   │
 │   ├── app.js
 │   └── server.js
 │
-│   ├── .env
-│   ├── .gitignore
-│   ├── package.json
-│   └── README.md
+├── frontend/
+│   ├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── context/
+│   ├── hooks/
+│   ├── services/
+│   ├── assets/
+│   └── main.jsx
 │
-└── frontend/
-    │
-    ├── public/
-    │
-    ├── src/
-    │
-    ├── assets/
-    │   ├── images/
-    │   ├── icons/
-    │   └── logos/
-    │
-    ├── components/
-    │   │
-    │   ├── common/
-    │   │   ├── Navbar.jsx
-    │   │   ├── Footer.jsx
-    │   │   ├── Sidebar.jsx
-    │   │   └── Loader.jsx
-    │   │
-    │   ├── landingComponents/
-    │   │   ├── Navbar/
-    │   │   ├── Hero/
-    │   │   ├── Features/
-    │   │   ├── HowItWorks/
-    │   │   ├── Pricing/
-    │   │   ├── Testimonials/
-    │   │   ├── FAQ/
-    │   │   ├── CTA/
-    │   │   └── Footer/
-    │   │
-    │   ├── auth/
-    │   │   ├── Login.jsx
-    │   │   |
-    │   │   └── GoogleLoginButton.jsx
-    │   │
-    │   ├── dashboard/
-    │   │   ├── DashboardNavbar.jsx
-    │   │   ├── DashboardSidebar.jsx
-    │   │   ├── StatsCard.jsx
-    │   │   ├── ProgressCard.jsx
-    │   │   └── RecentActivity.jsx
-    │   │
-    │   ├── ai/
-    │   │   ├── AiChat.jsx
-    │   │   ├── ChatBubble.jsx
-    │   │   ├── VoiceInput.jsx
-    │   │   └── AiTyping.jsx
-    │   │
-    │   ├── quiz/
-    │   ├── course/
-    │   └── profile/
-    │
-    ├── pages/
-    │   ├── LandingPage.jsx
-    │   ├── LoginPage.jsx
-    │   ├---OnboardingPage
-    │   ├── Dashboard.jsx
-    │   ├── Courses.jsx
-    │   ├── Quiz.jsx
-    │   ├── AiTutor.jsx
-    │   ├── Profile.jsx
-    │   ├── Settings.jsx
-    │   ├── Pricing.jsx
-    │   └── NotFound.jsx
-    │
-    ├── routes/
-    │   ├── AppRoutes.jsx
-    │   ├── PrivateRoute.jsx
-    │   └── AdminRoute.jsx
-    │
-    ├── context/
-    │   ├── AuthContext.jsx
-    │   ├── UserContext.jsx
-    │   └── ThemeContext.jsx
-    │
-    ├── services/
-    │   ├── api.js
-    │   ├── authService.js
-    │   ├── aiService.js
-    │   └── paymentService.js
-    │
-    ├── hooks/
-    │   ├── useAuth.js
-    │   ├── useAi.js
-    │   └── useTheme.js
-    │
-    ├── data/
-    │
-    ├── utils/
-    │   ├── constants.js
-    │   ├── helpers.js
-    │   └── validators.js
-    │
-    ├── App.jsx
-    ├── main.jsx
-    └── index.css
-    │
-    ├── package.json
-    └── vite.config.js
+└── README.md
+⚙️ Installation & Setup
+1️⃣ Clone Repository
+git clone https://github.com/your-username/AI-Nepali-Learning-Assistant.git
+cd AI-Nepali-Learning-Assistant
+2️⃣ Backend Setup
+cd backend
+npm install
+Create .env file
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_secret_key
 
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-
-
-
-
-
-
-
+FRONTEND_URL=http://localhost:5173
+Run backend
+npm run dev
+3️⃣ Frontend Setup
+cd frontend
+npm install
+npm run dev
+🔐 Authentication Flow
+Email/Password login via JWT
+Google OAuth login via Passport.js
+On successful login:
+Token generated
+User redirected to dashboard or onboarding
+🤖 AI Features
+AI Chat Tutor (Nepali + English support)
+Smart quiz generation
+Personalized learning recommendations (planned)
+📊 Gamification System
+XP points system
+Daily streak tracking
+Badges for achievements
+Global leaderboard
+💳 Payments (Structure Ready)
+Subscription model prepared
+Payment service integrated structure (Stripe/Razorpay ready)
+🛠️ Future Improvements
+📱 Mobile app (React Native)
+🎤 Voice-based AI tutor
+🌐 Multi-language support (Nepali + English + Hindi)
+📈 Advanced analytics dashboard
+🧑‍🏫 Teacher dashboard
+🤝 Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+📜 License
+MIT License © 2026
+👨‍💻 Author
+Built with ❤️ by Ngema

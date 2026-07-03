@@ -8,11 +8,8 @@ import { User } from "../models/User.js";
 // ==============================
 // DEBUG
 // ==============================
-console.log("==================================");
 console.log("GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
 console.log("GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET ? "Loaded ✅" : "Missing ❌");
-console.log("JWT_SECRET:", process.env.JWT_SECRET ? "Loaded ✅" : "Missing ❌");
-console.log("==================================");
 
 passport.use(
   new GoogleStrategy(
@@ -23,31 +20,28 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
-        let user = await User.findOne({
-          googleId: profile.id,
-        });
+        let user = await User.findOne({ googleId: profile.id });
 
         if (!user) {
-          user = await User.findOne({
-            email: profile.emails[0].value,
-          });
+          user = await User.findOne({ email: profile.emails?.[0]?.value });
 
           if (user) {
             user.googleId = profile.id;
-            user.avatar = profile.photos[0]?.value;
+            user.avatar = profile.photos?.[0]?.value;
             await user.save();
           } else {
             user = await User.create({
               username: profile.displayName,
-              email: profile.emails[0].value,
+              email: profile.emails?.[0]?.value,
               googleId: profile.id,
-              avatar: profile.photos[0]?.value,
+              avatar: profile.photos?.[0]?.value,
               isVerified: true,
               isOnboarded: false,
             });
           }
         }
 
+        // ✅ IMPORTANT FIX: ONLY USER RETURN
         return done(null, user);
       } catch (err) {
         console.error("❌ Passport Error:", err);
@@ -57,8 +51,11 @@ passport.use(
   )
 );
 
+// ==============================
+// SESSION HANDLING
+// ==============================
 passport.serializeUser((user, done) => {
-  done(null, user._id.toString());
+  done(null, user._id);
 });
 
 passport.deserializeUser(async (id, done) => {
