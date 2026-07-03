@@ -5,20 +5,32 @@ import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { User } from "../models/User.js";
 
+// ==============================
+// DEBUG
+// ==============================
+console.log("==================================");
+console.log("GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
+console.log("GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET ? "Loaded ✅" : "Missing ❌");
+console.log("JWT_SECRET:", process.env.JWT_SECRET ? "Loaded ✅" : "Missing ❌");
+console.log("==================================");
+
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-     callbackURL: "http://localhost:5000/api/auth/google/callback",
+      callbackURL: "http://localhost:5000/api/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
-        // ✅ Direct User use garne - User.User hoina
-        let user = await User.findOne({ googleId: profile.id });
+        let user = await User.findOne({
+          googleId: profile.id,
+        });
 
         if (!user) {
-          user = await User.findOne({ email: profile.emails[0].value });
+          user = await User.findOne({
+            email: profile.emails[0].value,
+          });
 
           if (user) {
             user.googleId = profile.id;
@@ -57,3 +69,5 @@ passport.deserializeUser(async (id, done) => {
     done(err, null);
   }
 });
+
+export default passport;
