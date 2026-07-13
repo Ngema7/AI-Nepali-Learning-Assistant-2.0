@@ -1,3 +1,5 @@
+
+import "dotenv/config";
 import dotenv from "dotenv";
 // १. सबैभन्दा पहिले एनभायर्नमेन्ट भेरिएबल लोड गर्ने
 dotenv.config(); 
