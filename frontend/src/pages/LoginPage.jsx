@@ -17,12 +17,9 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      const user = await login(email, password);
-      if (!user.isOnboarded) {
-        navigate("/onboarding");
-      } else {
-        navigate("/dashboard");
-      }
+      // ✅ सिधै लगइन गरेर ड्यासबोर्डमा रिडाइरेक्ट गर्ने (अनबोर्डिङ चेक हटाइयो)
+      await login(email, password);
+      navigate("/dashboard");
     } catch (err) {
       setError(err?.response?.data?.message || "Invalid email or password.");
     } finally {
@@ -30,9 +27,8 @@ const LoginPage = () => {
     }
   };
 
-  // ✅ /api/auth/google - correct URL
   const handleGoogleLogin = () => {
-   window.location.href = "http://localhost:5000/api/auth/google";
+    window.location.href = "http://localhost:5000/api/auth/google";
   };
 
   return (

@@ -1,42 +1,28 @@
 import express from "express";
 import passport from "passport";
-import {
-  loginUser,
-  registerUser,
-  getMe,
-  logoutUser,
-  completeOnboarding,
-  googleCallback,
-} from "../controllers/authController.js";
+import { loginUser, getMe, logoutUser, googleCallback } from "../controllers/authController.js";
 import protect from "../middleware/auth.js";
 
 const router = express.Router();
 
 router.post("/login", loginUser);
-router.post("/register", registerUser);
 router.get("/me", protect, getMe);
 router.post("/logout", protect, logoutUser);
-router.post("/onboarding", protect, completeOnboarding);
 
-// ==============================
-// GOOGLE LOGIN START
-// ==============================
+// ✅ केवल एउटा मात्र सफा गुगल राउट राख्नुहोस्
 router.get(
   "/google",
   passport.authenticate("google", {
     scope: ["profile", "email"],
-    session: false, // ✅ FIX
+    session: false,
   })
 );
 
-// ==============================
-// GOOGLE CALLBACK
-// ==============================
 router.get(
   "/google/callback",
   passport.authenticate("google", {
     failureRedirect: "http://localhost:5173/login?error=google_failed",
-    session: false, // ✅ FIX
+    session: false, 
   }),
   googleCallback
 );

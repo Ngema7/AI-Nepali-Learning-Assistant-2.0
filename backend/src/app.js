@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
-dotenv.config();
+// १. सबैभन्दा पहिले एनभायर्नमेन्ट भेरिएबल लोड गर्ने
+dotenv.config(); 
 
 import express from "express";
 import cors from "cors";
@@ -7,6 +8,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import passport from "passport";
 
+// २. त्यसपछि मात्र पासपोर्ट कन्फिगरेसन र राउट्स ल्याउने
 import "./config/passport.js";
 import authRoutes from "./routes/authRoutes.js";
 
@@ -22,9 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan("dev"));
 
-// ❌ REMOVE SESSION COMPLETELY (IMPORTANT FIX)
-
-// passport init only
+// ३. पासपोर्ट इनिसियलाइज गर्ने
 app.use(passport.initialize());
 
 app.get("/", (req, res) => {

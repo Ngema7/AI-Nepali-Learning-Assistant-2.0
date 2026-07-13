@@ -13,11 +13,7 @@ const PrivateRoute = ({ children }) => {
 
   if (!user) return <Navigate to="/login" replace />;
 
-  // Onboarding check - naya user vaye onboarding page ma pathau
-  if (!user.isOnboarded && window.location.pathname !== "/onboarding") {
-    return <Navigate to="/onboarding" replace />;
-  }
-
+  // ✅ Onboarding चेक हटाएर सिधै सुरक्षित पेज खोल्ने बनाइयो
   return children;
 };
 
